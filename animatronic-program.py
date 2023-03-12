@@ -5,6 +5,8 @@ from gpiozero import LED, Button, Servo # gpiozero library (installed by default
 # TODO: fix port constants
 leg_servo_front = Servo(0)
 leg_servo_back = Servo(0)
+head_servo = Servo(0)
+# figure out how to code pneumatics
 led = LED(0)
 button = Button(0)
 
@@ -34,6 +36,9 @@ while (program_start):
     for i in range(2): # walk cycle TODO: change for loop value to run for the right amount of time
         leg_servo_front.value = 0.0 # TODO: tune to the right value (from -1 to 1 where 0 is midpoint)
         leg_servo_back.value = 0.0 # TODO: tune to the right value
+    head_servo = 0.0 # TODO: tune to the right value
+
+    print("Fluttering nearby, you may see the Eastern Tiger Swallowtail...")
 
     led.off()
     print("End program")
