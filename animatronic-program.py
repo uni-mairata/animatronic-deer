@@ -3,7 +3,7 @@
     # sudo apt install code
 # imports
 import time
-from gpiozero import LED, Button, Servo # gpiozero library (installed by default in the Raspberry Pi OS Desktop image)
+from gpiozero import LED, Button, Servo # gpiozero library (installed by default)
 import RPi.GPIO as GPIO # import GPIO module
 from pygame.mixer import Sound
 
