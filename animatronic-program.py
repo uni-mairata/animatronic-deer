@@ -2,6 +2,7 @@
 import time
 from gpiozero import LED, Button, Servo # gpiozero library (installed by default in the Raspberry Pi OS Desktop image)
 import RPi.GPIO as GPIO # import GPIO module
+from pygame.mixer import Sound
 
 # pi initialization
 # TODO: fix port constants
@@ -16,6 +17,11 @@ GPIO.setup(port_or_pin, GPIO.OUT) #TODO: replace "port_or_pin"
 
 led = LED(0)
 button = Button(0)
+path = "/home/pi/"
+sound_files = "ADDFILEHERE.mp3"
+pygame.mixer.init()
+speaker_volume = 1.0
+pygame.mixer.music.set_volume(speaker_volume)
 
 PROGRAM_START = False
 
@@ -34,7 +40,10 @@ if PROGRAM_START:
     leg_servo_front.min()
     leg_servo_back.min()
     head_servo.value = 0.0 # reset to face forward (at the left side of the board) TODO: tune value
-    GPIO.output(port_or_pin, 0) # reset pneumatic position (if not already manually reset)
+    GPIO.output(port_or_pin, GPIO.LOW) # reset pneumatic position (if not already manually reset)
+
+    pygame.mixer.music.load("/home/uni_mairata/ADDFILEHERE.mp3")
+    pygame.mixer.music.play()
 
     print("Welcome to the creature exhibit at the Georgia state line visitor welcome center.")
     led.on() # white led color
@@ -55,10 +64,12 @@ if PROGRAM_START:
         leg_servo_back.value = 0.0 # TODO: tune to the right value
 
     print("Fluttering nearby, you may see the Eastern Tiger Swallowtail...")
-    GPIO.output(port_or_pin, 1)
-    time.sleep(3) # TODO: adjust timing
+    GPIO.output(port_or_pin, GPIO.HIGH) # move butterflies out
+    time.sleep(5) # TODO: adjust timing
+    GPIO.output(port_or_pin, GPIO.LOW) # move butterflies out
 
     led.off()
-    GPIO.cleanup()
+    pygame.mixer.music.stop() 
+    GPIO.cleanup() # cleanup at the end of program to clear all ports
     print("End program actions")
     PROGRAM_START = False
