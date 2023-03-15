@@ -68,6 +68,9 @@ if PROGRAM_START:
     time.sleep(5) # TODO: adjust timing
     GPIO.output(port_or_pin, GPIO.LOW) # move butterflies out
 
+    print("Try visiting one of our hiking trails or parks to try to find these creatures!")
+    # maybe add some more motion here?? tbh idk how long this entire thing is rn ack
+
     led.off()
     pygame.mixer.music.stop() 
     GPIO.cleanup() # cleanup at the end of program to clear all ports
