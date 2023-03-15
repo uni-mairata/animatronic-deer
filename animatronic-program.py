@@ -7,15 +7,15 @@ from pygame.mixer import Sound
 # pi initialization
 # TODO: fix port constants
 # TODO: try coding servos based on --> https://github.com/fervanegas/Test_360servo
-leg_servo_front = Servo(0) # TODO: figure out which two legs this controls
-leg_servo_back = Servo(0) # TODO: figure out which two legs this controls
-head_servo = Servo(0)
+leg_servo_front = Servo(14) # TODO: figure out which two legs this controls
+leg_servo_back = Servo(15) # TODO: figure out which two legs this controls
+head_servo = Servo(18)
 
-# pneumatic piston
+# pneumatic piston setup
 GPIO.setmode(GPIO.BCM) # should be able to move pneumatics based on this --> https://raspi.tv/2013/rpi-gpio-basics-5-setting-up-and-using-outputs-with-rpi-gpio
 GPIO.setup(port_or_pin, GPIO.OUT) #TODO: replace "port_or_pin"
 
-led = LED(0)
+led = LED(24)
 button = Button(0)
 path = "/home/pi/" # TODO: need to import mp3 file to the raspberry pi itself
 sound_files = "ADDFILEHERE.mp3"
