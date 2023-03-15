@@ -17,7 +17,7 @@ GPIO.setup(port_or_pin, GPIO.OUT) #TODO: replace "port_or_pin"
 
 led = LED(0)
 button = Button(0)
-path = "/home/pi/"
+path = "/home/pi/" # TODO: need to import mp3 file to the raspberry pi itself
 sound_files = "ADDFILEHERE.mp3"
 pygame.mixer.init()
 speaker_volume = 1.0
