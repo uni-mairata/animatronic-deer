@@ -1,3 +1,6 @@
+# TODO: download VS code to the raspberry pi maybe using 
+    # sudo apt update
+    # sudo apt install code
 # imports
 import time
 from gpiozero import LED, Button, Servo # gpiozero library (installed by default in the Raspberry Pi OS Desktop image)
